@@ -91,7 +91,7 @@ class gitActions {
           resp+=`[${e.title}](${e.html_url}) - ${e.repository.name} \n`
         });
 
-        res.set('Content-Type', 'application/json').send(resp).status(200);
+        res.set('Content-Type', 'application/json').send(JSON.stringify(resp)).status(200);
 
 
     })
