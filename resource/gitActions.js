@@ -77,7 +77,7 @@ class gitActions {
     });
     console.log(req)
   }
-    getIssue(){
+    getIssue(req,res,axios){
       axios({
         url: `repos/issues/search?state=open&assigned=true`,
         method: 'get',
