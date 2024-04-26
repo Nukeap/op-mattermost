@@ -28,8 +28,8 @@ module.exports = (app, axios) => {
 
   const UIActions = require('./uiActions');
   const GITactions = require('./gitActions')
- 
-  
+  const gitActions = new GITactions(giturl, mmURL, intURL)
+  const uiActions = new UIActions(opURL, mmURL, intURL);
   const RateLimit = require('express-rate-limit');
   const limiter = RateLimit({
     windowMs: 1*60*1000,
@@ -47,7 +47,7 @@ module.exports = (app, axios) => {
   app.post('/', (req, res) => {
     const {command, token, text} = req.body;
     if(token === process.env.MATTERMOST_SLASH_TOKEN) {
-      const uiActions = new UIActions(opURL, mmURL, intURL);
+      
       console.log("Request Body to / ", JSON.stringify(req.body, null, 2));
       if(command === "/op") {
         switch (text) {
@@ -83,7 +83,7 @@ module.exports = (app, axios) => {
       }
     }
     else if(token === process.env.MATTERMOST_GITEA_TOKEN) {
-      const gitActions = new GITactions(giturl, mmURL, intURL)
+      
       if(command==="/gitea"){
         switch (text) {
           case 'кто я':
