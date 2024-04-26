@@ -92,7 +92,8 @@ module.exports = (app, axios) => {
 
           case('задачи'):
             gitActions.getIssue(req, res, axios)
-        default:
+            break;
+            default:
           gitActions.getUser(req, res, axios)
       // res.send("Начало положено").status(400);
     }
