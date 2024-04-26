@@ -33,7 +33,7 @@ class gitActions {
     this.wpId = '';
     this.optLen = 3;
     this.headers = {
-      "Authorization": `token ${process.env.OP_ACCESS_TOKEN}`
+      "Authorization": `token ${process.env.GETEA_ACCESS}`
     }
     this.currentUser = '';
     
