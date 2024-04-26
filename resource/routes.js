@@ -74,6 +74,13 @@ module.exports = (app, axios) => {
             break;
         }
       }
+      else if(command==="/gitea"){
+        res.send("Начало положено").status(400);
+      }
+
+
+
+
       else {
         res.send("*I don't understand ", command, ". Let's try again...* \n `/op`").status(500);
       }
