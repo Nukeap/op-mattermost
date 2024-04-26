@@ -82,7 +82,7 @@ module.exports = (app, axios) => {
         res.send("*I don't understand ", command, ". Let's try again...* \n `/op`").status(500);
       }
     }
-    if(token === process.env.MATTERMOST_GITEA_TOKEN) {
+    else if(token === process.env.MATTERMOST_GITEA_TOKEN) {
       const gitActions = new GITactions(giturl, mmURL, intURL)
       if(command==="/gitea"){
         switch (text) {
