@@ -167,7 +167,7 @@ class Util {
   getWpOptJSON(url, optArray, action, mode = '') {
     let wpOptJSON = {
       "response_type": "in_channel",
-      "message": "*Please select a work package*",
+      "message": "*Выберите пакет задач*",
       "props": {
         "attachments": [
           {
@@ -282,8 +282,8 @@ class Util {
     };
 
     if (timeLogArray.length !== 0) {
-      tableTxt = "#### Time entries logged by you\n";
-      tableTxt += "| Spent On | Project | Work Package | Activity | Logged Time | Billed Time | Comment |\n";
+      tableTxt = "#### Потраченное время, указанное вами\n";
+      tableTxt += "| Потрачено на | Проект | Пакет задач | Activity | Logged Time | Billed Time | Comment |\n";
       tableTxt += "|:---------|:--------|:-------------|:---------|:------------|:------------|:--------|\n";
       timeLogArray.forEach(element => {
         if (element.comment === null) {
@@ -330,25 +330,25 @@ class Util {
       "url": url + 'saveWP',
       "dialog": {
         "callback_id": "create_wp_dlg",
-        "title": "Create a work package",
+        "title": "Создание пакета задач",
 	"introduction_text": "Create a work package by providing following details",
         "icon_url": url + 'getLogo',
         "elements": [{
-          "display_name": "Subject",
+          "display_name": "Название",
           "name": "subject",
           "type": "text",
-          "placeholder": "Name of work package"
+          "placeholder": "Имя пакета задач"
         },
           {
-            "display_name": "Select Type",
+            "display_name": "Тип",
             "name": "type",
             "type": "select",
-            "placeholder": "Type to search for type",
+            "placeholder": "Впишите название типа",
             "options": typeArray,
             "default": "opt1"
           },
           {
-            "display_name": "Assignee",
+            "display_name": "Назначен",
             "name": "assignee",
             "type": "select",
             "placeholder": "Type to search for users",
@@ -388,7 +388,7 @@ class Util {
                 }
               },
               {
-                "name": "Create Work Package",
+                "name": "Создать пакет задач",
                 "integration": {
                   "url": url + "createWP",
                   "context": {
@@ -424,7 +424,7 @@ class Util {
                 }
               },
               {
-                "name": "Subscribe to notifications",
+                "name": "Подписаться на уведомления",
                 "integration": {
                   "url": url + "subscribe",
                   "context": {
