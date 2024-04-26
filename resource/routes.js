@@ -84,7 +84,13 @@ module.exports = (app, axios) => {
     if(token === process.env.MATTERMOST_GITEA_TOKEN) {
     
       if(command==="/gitea"){
-        gitActions.getUser(req, res, axios)
+        switch (text) {
+          case 'кто я':
+          gitActions.getUser(req, res, axios)
+          break;
+
+        default:
+          gitActions.getUser(req, res, axios)
       // res.send("Начало положено").status(400);
     }
     }
