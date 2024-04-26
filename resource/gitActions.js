@@ -33,20 +33,20 @@ class gitActions {
     this.wpId = '';
     this.optLen = 3;
     this.headers = {
-      "X-GITEA-OTP": process.env.OP_ACCESS_TOKEN
+      "Authorization": `token ${process.env.OP_ACCESS_TOKEN}`
     }
     this.currentUser = '';
     
   }
     getUser(req,res,axios)
    {
-    // axios({
-    //   url: 'projects?sortBy=[["created_at","desc"]]',
-    //   method: 'get',
-    //   baseURL: this.opURL,
-    //   headers:this.headers
-    // }).then((response) => {
-    //   console.log("Projects obtained from OP: %o", response.data);
+    axios({
+      url: `users/${req.body.user_name}`,
+      method: 'get',
+      baseURL: this.opURL,
+      headers:this.headers
+    }).then((response) => {
+      console.log("Projects obtained from OP: %o", response.data);
     //   let projectOptArray = [];
     //   response.data._embedded.elements.forEach(element => {
     //     projectOptArray.push({
@@ -73,7 +73,7 @@ class gitActions {
     //     res.send("**Open Project server down!!**").status(500);
     //   }
     //   return false;
-    // });
+    });
     console.log(req)
   }
 
