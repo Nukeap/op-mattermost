@@ -24,10 +24,12 @@ module.exports = (app, axios) => {
   const opURL = process.env.OP_URL;
   const mmURL = process.env.MM_URL;
   const intURL = process.env.INT_URL;
+  const giturl = process.env.GITEA_URL
 
   const UIActions = require('./uiActions');
+  const GITactions = require('./gitActions')
   const uiActions = new UIActions(opURL, mmURL, intURL);
-
+  const gitActions = new GITactions(giturl, mmURL, intURL)
   const RateLimit = require('express-rate-limit');
   const limiter = RateLimit({
     windowMs: 1*60*1000,
@@ -82,7 +84,8 @@ module.exports = (app, axios) => {
     if(token === process.env.MATTERMOST_GITEA_TOKEN) {
     
       if(command==="/gitea"){
-      res.send("Начало положено").status(400);
+        gitActions.getUser(req, res, axios)
+      // res.send("Начало положено").status(400);
     }
     }
 
