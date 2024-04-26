@@ -77,7 +77,25 @@ class gitActions {
     });
     console.log(req)
   }
+    getIssue(){
+      axios({
+        url: `repos/issues/search?state=open&assigned=true`,
+        method: 'get',
+        baseURL: this.opURL,
+        headers:this.headers
+      }).then((response) => {
+        console.log("Projects obtained from OP: %o", response.data);
+        // res.send(`Вы ${response.data.login}; Ваша почта: ${response.data.email}`)
+        let resp =""
+        response.data.forEach((e) => {
+          resp+=`[${e.title}](${e.html_url}) - ${e.repository.name} \n`
+        });
 
+        res.set('Content-Type', 'application/json').send(resp).status(200);
+
+
+    })
+  }
   // showSelWP(req, res, axios, action, mode = '') {
   //   // noinspection JSUnresolvedVariable
   //   this.projectId = req.body.context.selected_option.slice(this.optLen);
