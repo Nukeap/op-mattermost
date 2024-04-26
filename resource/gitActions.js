@@ -47,6 +47,7 @@ class gitActions {
       headers:this.headers
     }).then((response) => {
       console.log("Projects obtained from OP: %o", response.data);
+      res.send(`Вы ${response.data.login}`)
     //   let projectOptArray = [];
     //   response.data._embedded.elements.forEach(element => {
     //     projectOptArray.push({
